@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Racer - The Ultimate  Racing Experience</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #ffffff;
+            --neon-blue: #00ffff;
+            --neon-pink: #ff00ff;
+            --neon-green: #00ff00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('images/Bg-img.jpeg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+            
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--neon-blue);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: url('https://images.unsplash.com/photo-1534445967719-8ae7b972b1a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--neon-blue);
+            animation: neon-flicker 1.5s infinite alternate;
+        }
+
+        @keyframes neon-flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                text-shadow: 
+                    0 0 5px var(--neon-blue),
+                    0 0 10px var(--neon-blue),
+                    0 0 15px var(--neon-blue),
+                    0 0 20px var(--neon-blue);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--neon-blue);
+            color: var(--bg-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--neon-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            background-color: rgba(10, 10, 10, 0.8); /* Semi-transparent dark background */
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--neon-green);
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .feature {
+            flex-basis: calc(33.333% - 2rem);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature h3 {
+            color: var(--neon-pink);
+            margin-bottom: 1rem;
+        }
+
+        #game-modes {
+            background-color: rgba(0, 0, 0, 0.9); /* Slightly darker background for contrast */
+        }
+
+        .mode-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .mode-btn {
+            padding: 0.5rem 1rem;
+            background-color: var(--neon-blue);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mode-btn:hover, .mode-btn.active {
+            background-color: var(--neon-pink);
+        }
+
+        .mode-content {
+            display: none;
+            animation: fade-in 0.5s ease;
+        }
+
+        .mode-content.active {
+            display: block;
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .feature {
+                flex-basis: 100%;
+            }
+
+            .mode-selector {
+                flex-direction: column;
+            }
+        }
+       
+
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#game-modes">Game Modes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Neon Racer</h1>
+                <p>Experience the thrill of street racing</p>
+                <a href="https://poki.com/en/g/mr-racer-car-racing" class="btn">Play Now</a>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <h2>Game Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Neon-Lit Cityscape</h3>
+                    <p>Race through a vibrant, futuristic city pulsing with neon lights and holographic billboards.</p>
+                </div>
+                <div class="feature">
+                    <h3>Customizable Vehicles</h3>
+                    <p>Upgrade and personalize your hover-car with cutting-edge tech and sleek neon designs.</p>
+                </div>
+                <div class="feature">
+                    <h3>Multiplayer Races</h3>
+                    <p>Compete against players worldwide in high-stakes street races and tournaments.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="game-modes" class="section">
+            <h2>Game Modes</h2>
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="story">Story Mode</button>
+                <button class="mode-btn" data-mode="arcade">Arcade Mode</button>
+                <button class="mode-btn" data-mode="multiplayer">Multiplayer</button>
+            </div>
+            <div class="mode-content active" id="story-mode">
+                <h3>Story Mode</h3>
+                <p>Dive into the neon-soaked underworld of Neo Tokyo. Rise from a rookie street racer to the ultimate racing legend in this immersive single-player experience.</p>
+            </div>
+            <div class="mode-content" id="arcade-mode">
+                <h3>Arcade Mode</h3>
+                <p>Test your skills in quick, adrenaline-pumping races. Choose from a variety of tracks and vehicles to beat your own high scores or challenge AI opponents.</p>
+            </div>
+            <div class="mode-content" id="multiplayer-mode">
+                <h3>Multiplayer</h3>
+                <p>Enter the global racing scene. Compete in real-time races against players from around the world, join racing crews, and participate in weekly tournaments.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Arqamm.exe</strong></p>
+        <p>&copy; 2024 Neon Racer. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modeButtons = document.querySelectorAll('.mode-btn');
+            const modeContents = document.querySelectorAll('.mode-content');
+
+            modeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const mode = button.getAttribute('data-mode');
+                    
+                    modeButtons.forEach(btn => btn.classList.remove('active'));
+                    modeContents.forEach(content => content.classList.remove('active'));
+                    
+                    button.classList.add('active');
+                    document.getElementById(`${mode}-mode`).classList.add('active');
+                });
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
